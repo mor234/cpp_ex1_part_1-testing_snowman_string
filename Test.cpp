@@ -84,29 +84,46 @@ TEST_CASE("Good snowman code") {
     CHECK(nospaces(snowman(11111311)) == nospaces("_===_\n(.,.)\\n<( : )\n( : )"));
     CHECK(nospaces(snowman(11111411)) == nospaces("_===_\n(.,.)\n<( : )\n( : )"));
 
-    //T- Torso--- fix!!!
-    CHECK(nospaces(snowman(11111121)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
-    CHECK(nospaces(snowman(11111131)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
-    CHECK(nospaces(snowman(11111141)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
+    //T- Torso
+    CHECK(nospaces(snowman(11111121)) == nospaces("_===_\n(.,.)\n<(] [)>\n( : )"));
+    CHECK(nospaces(snowman(11111131)) == nospaces("_===_\n(.,.)\n<(> <)>\n( : )"));
+    CHECK(nospaces(snowman(11111141)) == nospaces("_===_\n(.,.)\n<(   )>\n( : )"));
 
     //B- Base
-    CHECK(nospaces(snowman(11111112)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
-    CHECK(nospaces(snowman(11111113)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
-    CHECK(nospaces(snowman(11111114)) == nospaces("_===_\n(.,.)\n<( : )>\n( : )"));
+    CHECK(nospaces(snowman(11111112)) == nospaces("_===_\n(.,.)\n<( : )>\n(\" \")"));
+    CHECK(nospaces(snowman(11111113)) == nospaces("_===_\n(.,.)\n<( : )>\n(___)"));
+    CHECK(nospaces(snowman(11111114)) == nospaces("_===_\n(.,.)\n<( : )>\n(   )"));
 }
 
 TEST_CASE("Bad snowman code") {
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(555));
 
-    /* Add more checks here */
+    //shorter then 8 charecters
+    CHECK_THROWS(snowman(1111111));
+    //longer then 8 charecters
+    CHECK_THROWS(snowman(111111111));
+    //negative number
+    CHECK_THROWS(snowman(-11111111));
+
+
+    //one of the charecters is bigger then 4
+    CHECK_THROWS(snowman(51111111));
+    CHECK_THROWS(snowman(15111111));
+    CHECK_THROWS(snowman(11511111));
+    CHECK_THROWS(snowman(11151111));
+    CHECK_THROWS(snowman(11115111));
+    CHECK_THROWS(snowman(11111511));
+    CHECK_THROWS(snowman(11111151));
+    CHECK_THROWS(snowman(11111115));
+
+    //one of the charecters is 0
+    CHECK_THROWS(snowman(10111111));
+    CHECK_THROWS(snowman(11011111));
+    CHECK_THROWS(snowman(11101111));
+    CHECK_THROWS(snowman(11110111));
+    CHECK_THROWS(snowman(11111011));
+    CHECK_THROWS(snowman(11111101));
+    CHECK_THROWS(snowman(11111110));
+
 }
 
 
-/* Add more test cases here */
